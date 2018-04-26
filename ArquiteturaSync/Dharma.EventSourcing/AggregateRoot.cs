@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Dharma.EventSourcing
+{
+    public abstract  class AggregateRoot<TEvent> where TEvent : Event
+    {
+        public string ID { get; set; }
+        public List<TEvent> Events { get; set; }
+        private long _version { get; set; }
+        public long Version { get; private set; }
+        private bool _commited { get; set; }
+
+        /// <summary>
+        /// Rebuilds the aggregate based on the event stream
+        /// </summary>
+        public abstract void RebuildEventStream();
+
+        /// <summary>
+        /// Adds an event to the stream
+        /// </summary>
+        /// <param name="e"></param>
+        public abstract void AddEventToStream(TEvent e);
+
+        /// <summary>
+        /// This method increments the current Aggregate version plus one
+        /// </summary>
+        public void CommitChanges()
+        {
+            if (!_commited)
+            {
+                Version++;
+                _commited = true;
+            }
+        }
+
+        /// <summary>
+        /// Verifies if the event stream has a specific event by its base date and source attributes
+        /// </summary>
+        /// <param name="e">event to be searched</param>
+        /// <returns></returns>
+        public virtual bool HasEvent(TEvent e)
+        {
+            return Events.Any(x => x.Date == e.Date && x.Source == e.Source);
+        }
+
+
+        /// <summary>
+        /// Verifies if the event stream has a specific event by its date and fingerprint
+        /// </summary>
+        /// <param name="date">date of the event</param>
+        /// <param name="fingerPrint">finger print of its original message</param>
+        /// <returns></returns>
+        public virtual bool HasEvent(DateTime date,string fingerPrint)
+        {
+            return Events.Any(x => x.Date == date && x.FingerPrint == fingerPrint);
+        }
+    }
+}
