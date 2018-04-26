@@ -1,7 +1,7 @@
 ﻿using System;
 using Dharma.EventSourcing;
 
-namespace Members.EventStore
+namespace Members.EventStore.Domain.Aggregates
 {
     public class MemberAggregateRoot : AggregateRoot<Event>
     {
