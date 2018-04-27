@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Dharma.EventSourcing
+namespace DotzNext.EventSourcing
 {
     public abstract  class AggregateRoot<TEvent> where TEvent : Event
     {
@@ -43,18 +42,6 @@ namespace Dharma.EventSourcing
         public virtual bool HasEvent(TEvent e)
         {
             return Events.Any(x => x.Date == e.Date && x.Source == e.Source);
-        }
-
-
-        /// <summary>
-        /// Verifies if the event stream has a specific event by its date and fingerprint
-        /// </summary>
-        /// <param name="date">date of the event</param>
-        /// <param name="fingerPrint">finger print of its original message</param>
-        /// <returns></returns>
-        public virtual bool HasEvent(DateTime date,string fingerPrint)
-        {
-            return Events.Any(x => x.Date == date && x.FingerPrint == fingerPrint);
         }
     }
 }

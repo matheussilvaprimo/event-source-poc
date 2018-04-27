@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Dharma.EventSourcing
+namespace DotzNext.EventSourcing
 {
-    public abstract class Event
+    public abstract class Event: IEvent
     {
         public string ID { get; }
         /// <summary>
@@ -10,21 +10,23 @@ namespace Dharma.EventSourcing
         /// </summary>
         public DateTime Date { get; }
         /// <summary>
-        /// Finger print of the message that generated this event
-        /// </summary>
-        public string FingerPrint { get; }
-        /// <summary>
         /// Source that generated this event
         /// </summary>
         public string Source { get; }
 
-        public Event(string ID, DateTime Date, string FingerPrint, string Source)
+        public Event(string ID, DateTime Date, string Source)
         {
-            //TODO: Validar necessidade de ter um ID para o evento
             this.ID = ID;
             this.Date = Date;
-            this.FingerPrint = FingerPrint;
             this.Source = Source;
         }
+
+        public abstract Object GetVersion();
+    }
+
+
+    public interface IEvent
+    {
+        Object GetVersion();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
-using Dharma.EventSourcing;
+using System.Collections.Generic;
+using DotzNext.EventSourcing;
 
 namespace Members.Sync.EventSourcing.Domain.Aggregates
 {
@@ -17,6 +18,14 @@ namespace Members.Sync.EventSourcing.Domain.Aggregates
         /// This property contains the current Member Addresses state rebuilt by the event stream serialized
         /// </summary>
         public string Addresses { get; set; }
+        /// <summary>
+        /// This property contains the current Member state rebuilt by the event stream deserialized 
+        /// </summary>
+        public Member MemberState { get; set; }
+        /// <summary>
+        /// This property contains the current Addresses state rebuilt by the event stream deserialized
+        /// </summary>
+        public List<Address> AddressState { get; set; }
 
         public override void AddEventToStream(Event e)
         {
