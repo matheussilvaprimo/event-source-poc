@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
-using Dharma.EventSourcing;
-using Members.EventStore.Domain.Events;
+using Members.Consumer.EventSourcing.Domain.Events;
+using Members.Consumer.EventSourcing.Infra;
 
-namespace Members.EventStore.Domain.Handlers
+namespace Members.Consumer.EventSourcing.Domain.Handlers
 {
     public class MemberCreatedHandler
     {
-        public MemberCreatedHandler(IEventStore eventStore)
+        public MemberCreatedHandler(CassandraEventStore<MemberCreatedEvent> eventStore)
         {
             _eventStore = eventStore;
         }
 
-        private readonly IEventStore _eventStore;
+        private readonly CassandraEventStore<MemberCreatedEvent> _eventStore;
 
         public async Task HandleMemberAsync(MemberCreatedEvent @event)
         {

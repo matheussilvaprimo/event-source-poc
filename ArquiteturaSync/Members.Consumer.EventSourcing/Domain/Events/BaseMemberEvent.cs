@@ -1,7 +1,7 @@
 ﻿using System;
 using Dharma.EventSourcing;
 
-namespace Members.EventStore.Domain.Events
+namespace Members.Consumer.EventSourcing.Domain.Events
 {
     public class BaseMemberEvent : Event
     {
