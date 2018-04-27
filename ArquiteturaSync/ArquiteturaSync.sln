@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dharma.EventSourcing", "Dharma.EventSourcing\Dharma.EventSourcing.csproj", "{ABE36459-1517-4E03-878B-752FBA9A825D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.Consumer.EventSourcing", "Members.Consumer.EventSourcing\Members.Consumer.EventSourcing.csproj", "{360084FF-37EB-45B5-9D56-B05DCC7FADC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Members.Sync.EventSourcing", "Members.Sync.EventSourcing\Members.Sync.EventSourcing.csproj", "{360084FF-37EB-45B5-9D56-B05DCC7FADC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.Sync.Consumer", "Members.Sync.Consumer\Members.Sync.Consumer.csproj", "{063BB08A-09EA-4CF5-A539-56C63EFD2C8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{360084FF-37EB-45B5-9D56-B05DCC7FADC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360084FF-37EB-45B5-9D56-B05DCC7FADC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360084FF-37EB-45B5-9D56-B05DCC7FADC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{063BB08A-09EA-4CF5-A539-56C63EFD2C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{063BB08A-09EA-4CF5-A539-56C63EFD2C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{063BB08A-09EA-4CF5-A539-56C63EFD2C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{063BB08A-09EA-4CF5-A539-56C63EFD2C8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

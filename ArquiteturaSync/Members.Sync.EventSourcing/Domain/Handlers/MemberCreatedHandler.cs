@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Members.Consumer.EventSourcing.Domain.Events;
-using Members.Consumer.EventSourcing.Infra;
+using Members.Sync.EventSourcing.Domain.Events;
+using Members.Sync.EventSourcing.Infra;
 
-namespace Members.Consumer.EventSourcing.Domain.Handlers
+namespace Members.Sync.EventSourcing.Domain.Handlers
 {
     public class MemberCreatedHandler
     {

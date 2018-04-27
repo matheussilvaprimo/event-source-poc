@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Members.Consumer.EventSourcing.Domain.Events
+namespace Members.Sync.EventSourcing.Domain.Events
 {
     public class MemberCreatedEvent : BaseMemberEvent
     {
