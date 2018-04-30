@@ -6,12 +6,12 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
 {
     public class MemberCreatedHandler
     {
-        public MemberCreatedHandler(CassandraEventStore<MemberCreatedEvent> eventStore)
+        public MemberCreatedHandler(IMemberEventStore eventStore)
         {
             _eventStore = eventStore;
         }
 
-        private readonly CassandraEventStore<MemberCreatedEvent> _eventStore;
+        private readonly IMemberEventStore _eventStore;
 
         public async Task HandleMemberAsync(MemberCreatedEvent @event)
         {

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using DotzNext.EventSourcing;
 using Members.Sync.Next.EventSourcing.Domain.Aggregates;
+using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Infra
 {
-    public class CassandraEventStore<TEvent>
-            where TEvent : Event
+    public class CassandraEventStore : IMemberEventStore
     {
         private readonly CassandraProvider _provider;
         public CassandraEventStore(CassandraProvider provider)
@@ -18,25 +17,26 @@ namespace Members.Sync.Next.EventSourcing.Infra
 
         public Task<MemberAggregateRoot> GetAggregateAsync(Expression<Func<MemberAggregateRoot, bool>> predicate)
         {
-            //var ret = _provider.FindSomeThingAsync()..
             throw new NotImplementedException();
         }
 
-        public Task<List<Event>> GetEventsAsync(string aggregateId)
+        public Task<IEnumerable<BaseMemberEvent>> GetEventsAsync(string aggregateId)
         {
-            //var ret = _provider.FindSomeThingAsync()..
             throw new NotImplementedException();
         }
 
         public Task SaveAggregateAsync(MemberAggregateRoot aggregate)
         {
-            //await_provider.InsertSomeThingAsync()..
             throw new NotImplementedException();
         }
 
-        public Task SaveEventAsync(string aggregateId, Event @event)
+        public Task SaveEventAsync(string aggregateId, string userID, string legacyID, BaseMemberEvent @event)
         {
-            //await _provider.SaveSomeThingAsync()..
+            throw new NotImplementedException();
+        }
+
+        public Task SaveEventAsync(string aggregateId, BaseMemberEvent @event)
+        {
             throw new NotImplementedException();
         }
     }

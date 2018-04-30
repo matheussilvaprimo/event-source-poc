@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using DotzNext.EventSourcing;
+using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 {
-    public class MemberAggregateRoot : AggregateRoot<Event>
+    public class MemberAggregateRoot : AggregateRoot<BaseMemberEvent>
     {
         public string MemberID { get; set; }
         public string LegacyID { get; set; }
@@ -27,7 +28,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
         /// </summary>
         public List<Address> AddressState { get; set; }
 
-        public override void AddEventToStream(Event e)
+        public override void AddEventToStream(BaseMemberEvent e)
         {
             throw new NotImplementedException();
         }
