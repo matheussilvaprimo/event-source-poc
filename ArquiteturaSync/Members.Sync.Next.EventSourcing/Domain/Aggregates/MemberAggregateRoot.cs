@@ -45,9 +45,19 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 
             Events.OrderBy(x => x.Date).ToList().ForEach(x =>
             {
-                if (x.GetType() == typeof(MemberCreatedEvent))
+                var t = x.GetType();
+
+                if (t == typeof(MemberCreatedEvent))
                 {
                     MapMemberCreatedEvent(x);
+                }
+                else if(t == typeof(MemberPersonalInfoUpdatedEvent))
+                {
+                    MapMemberPersonalInfoUpdatedEvent(x);
+                }
+                else if(t == typeof(AddressCreatedEvent))
+                {
+                    MapMemberAddressCreatedEvent(x);
                 }
             });
         }
@@ -63,6 +73,16 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
             if (m.Age > 0) MemberState.Age = m.Age;
             if (!string.IsNullOrWhiteSpace(m.CellNumber)) MemberState.CellNumber = m.CellNumber;
             if (m.DateOfBirth != null || MemberState.DateOfBirth != DateTime.MinValue) MemberState.DateOfBirth = m.DateOfBirth;
+        }
+
+        private void MapMemberPersonalInfoUpdatedEvent(BaseMemberEvent e)
+        {
+            var m = e as MemberPersonalInfoUpdatedEvent;
+        }
+
+        private void MapMemberAddressCreatedEvent(BaseMemberEvent e)
+        {
+
         }
     }
 }
