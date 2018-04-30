@@ -15,7 +15,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         {
             _handler = new ServiceCollection()
                                      .AddScoped<MemberCreatedHandler>()
-                                     .AddScoped<ICassandraEventStore, CassandraEventStore>()
+                                     .AddScoped<ICassandraEventStore, MockEventStore>()
                                      .AddScoped<CassandraProvider>()
                                      .BuildServiceProvider()
                                      .GetService<MemberCreatedHandler>();
@@ -24,7 +24,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         [Fact]
         public void HandleMemberWithMessageNull()
         {
-            var result = _handler.HandleMemberAsync(null);
+            var result = _handler.HandleEventAsync(null);
             Assert.False(result.Result);
         }
 
@@ -34,7 +34,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
             var @event = new MemberCreatedEvent("im an identifier", 0, string.Empty, "im an legacy id", "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
                                            "Im an event type", null, "im an fingerprint", "Im an ID", DateTime.Now, "TEST");
 
-            var result = _handler.HandleMemberAsync(@event);
+            var result = _handler.HandleEventAsync(@event);
 
             Assert.True(result.Result);
         }

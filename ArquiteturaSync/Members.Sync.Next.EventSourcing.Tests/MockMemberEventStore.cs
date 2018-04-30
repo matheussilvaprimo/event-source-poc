@@ -1,13 +1,14 @@
-﻿using DotzNext.EventStore;
-using Members.Sync.Next.EventSourcing.Domain.Aggregates;
-using Members.Sync.Next.EventSourcing.Domain.Events;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Members.Sync.Next.EventSourcing.Domain.Aggregates;
+using Members.Sync.Next.EventSourcing.Domain.Events;
+using Members.Sync.Next.EventSourcing.Infra;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
-    public class MockEventStore : IEventStore<MemberAggregateRoot, BaseMemberEvent>
+    public class MockEventStore : ICassandraEventStore
     {
         public MockEventStore()
         {
@@ -15,6 +16,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         }
 
         private static List<MemberAggregateRoot> _aggregates;
+        private static List<BaseMemberEvent> _events;
 
         public async Task<IEnumerable<BaseMemberEvent>> GetEventsAsync(string aggregateId)
         {
@@ -32,6 +34,16 @@ namespace Members.Sync.Next.EventSourcing.Tests
             if (aggregate == null) return null;
 
             return Task.Run(() => aggregate.AddEventToStream(@event));
+        }
+
+        public async Task SaveEventAsync(BaseMemberEvent @event)
+        {
+            await Task.Run(() => { _events.Add(@event); });
+        }
+
+        public async Task<MemberAggregateRoot> GetAggregateAsync(Func<MemberAggregateRoot, bool> predicate)
+        {
+            return await Task.Run(() => { return _aggregates.FirstOrDefault(predicate); });
         }
     }
 }

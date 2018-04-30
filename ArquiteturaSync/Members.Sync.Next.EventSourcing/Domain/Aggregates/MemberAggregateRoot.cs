@@ -10,6 +10,8 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
     {
         public string MemberID { get; set; }
         public string LegacyID { get; set; }
+        public string MemberIdentifier { get; set; }
+        public int MemberIdentifierType { get; set; }
 
         /// <summary>
         /// This property contains the current Member state rebuilt by the event stream serialized

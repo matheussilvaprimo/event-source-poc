@@ -15,7 +15,7 @@ namespace Members.Sync.Next.EventSourcing.Infra
             _provider = provider;
         }
 
-        public Task<MemberAggregateRoot> GetAggregateAsync(Expression<Func<MemberAggregateRoot, bool>> predicate)
+        public Task<MemberAggregateRoot> GetAggregateAsync(Func<MemberAggregateRoot, bool> predicate)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace Members.Sync.Next.EventSourcing.Infra
             throw new NotImplementedException();
         }
 
-        public Task SaveEventAsync(string aggregateId, string userID, string legacyID, BaseMemberEvent @event)
+        public Task SaveEventAsync(BaseMemberEvent @event)
         {
             throw new NotImplementedException();
         }
