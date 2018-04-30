@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
-    public class MockEventStore : IEventStore<MockMemberAggregateRoot, BaseMemberEvent>
+    public class MockMemberEventStore : IEventStore<MockMemberAggregateRoot, BaseMemberEvent>
     {
         private static List<MockMemberAggregateRoot> _aggregates = new List<MockMemberAggregateRoot>();
 
