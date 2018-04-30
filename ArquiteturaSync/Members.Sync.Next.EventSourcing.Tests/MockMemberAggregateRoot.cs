@@ -1,11 +1,13 @@
 ﻿using Members.Sync.Next.EventSourcing.Domain.Aggregates;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
     public class MockMemberAggregateRoot : MemberAggregateRoot
     {
+        public override void AddEventToStream(BaseMemberEvent e)
+        {
+            Events.Add(e);
+        }        
     }
 }
