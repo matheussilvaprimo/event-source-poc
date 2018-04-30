@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DotzNext.EventSourcing;
-using Members.Sync.EventSourcing.Domain.Aggregates;
+using Members.Sync.Next.EventSourcing.Domain.Aggregates;
 
-namespace Members.Sync.EventSourcing.Infra
+namespace Members.Sync.Next.EventSourcing.Infra
 {
     public class CassandraEventStore<TEvent>
             where TEvent : Event

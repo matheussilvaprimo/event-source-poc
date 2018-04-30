@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Members.Sync.EventSourcing.Domain.Events
+namespace Members.Sync.Next.EventSourcing.Domain.Events
 {
     public class MemberPersonalInfoUpdatedEvent : BaseMemberEvent
     {

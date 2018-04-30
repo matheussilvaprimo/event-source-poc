@@ -1,4 +1,4 @@
-﻿namespace Members.Sync.EventSourcing.Infra
+﻿namespace Members.Sync.Next.EventSourcing.Infra
 {
     public class CassandraProvider
     {

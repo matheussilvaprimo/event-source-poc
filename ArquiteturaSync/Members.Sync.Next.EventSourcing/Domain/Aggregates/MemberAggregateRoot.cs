@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using DotzNext.EventSourcing;
 
-namespace Members.Sync.EventSourcing.Domain.Aggregates
+namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 {
     public class MemberAggregateRoot : AggregateRoot<Event>
     {

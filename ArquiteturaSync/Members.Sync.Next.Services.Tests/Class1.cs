@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Members.Sync.Services
+namespace Members.Sync.Next.Services.Tests
 {
     public class Class1
     {

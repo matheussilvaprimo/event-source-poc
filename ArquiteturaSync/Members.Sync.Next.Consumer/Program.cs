@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Members.Sync.Consumer
+namespace Members.Sync.Next.Consumer
 {
     class Program
     {

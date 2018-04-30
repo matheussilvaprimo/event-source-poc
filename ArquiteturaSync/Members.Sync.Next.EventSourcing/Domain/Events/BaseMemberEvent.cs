@@ -1,7 +1,7 @@
 ﻿using System;
 using DotzNext.EventSourcing;
 
-namespace Members.Sync.EventSourcing.Domain.Events
+namespace Members.Sync.Next.EventSourcing.Domain.Events
 {
     public class BaseMemberEvent : Event
     {
