@@ -8,7 +8,7 @@
     {
         public static string GenerateTimeUUID()
         {
-            return string.Empty;
+            return Cassandra.TimeUuid.NewId().ToString();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
 
                 if (handleEvent)
                 {
-                    await _eventStore.SaveEventAsync("im an AggregateRoot ID", @event);
+                    await _eventStore.SaveEventAsync(@event);
                     return true;
                 }
 

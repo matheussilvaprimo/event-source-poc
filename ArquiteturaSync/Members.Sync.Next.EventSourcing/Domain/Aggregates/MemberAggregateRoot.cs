@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DotzNext.EventSourcing;
 using Members.Sync.Next.EventSourcing.Domain.Events;
+using Members.Sync.Next.EventSourcing.Infra;
 
 namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 {
@@ -64,7 +65,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
             });
         }
 
-        public static MemberAggregateRoot New() => new MemberAggregateRoot { Events = new List<BaseMemberEvent>() };
+        public static MemberAggregateRoot New() => new MemberAggregateRoot { ID = CassandraUtils.GenerateTimeUUID() , Events = new List<BaseMemberEvent>() };
 
         private void ApplyMemberCreatedEvent(BaseMemberEvent e)
         {

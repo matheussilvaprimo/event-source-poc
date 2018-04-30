@@ -12,7 +12,9 @@ namespace Members.Sync.Next.EventSourcing.Tests
     {
         public MockEventStore()
         {
+            //TODO: Implement seed
             _aggregates = new List<MemberAggregateRoot>();
+            _events = new List<BaseMemberEvent>();
         }
 
         private static List<MemberAggregateRoot> _aggregates;
