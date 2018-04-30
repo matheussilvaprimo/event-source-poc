@@ -26,7 +26,8 @@ namespace Members.Sync.Next.EventSourcing.Tests
         {
             var provider = Setup();
             var handler = provider.GetService<MemberCreatedHandler>();
-            var message = new MemberCreatedEvent("", "", DateTime.Now, "");
+            var message = new MemberCreatedEvent("im an identifier", 0, string.Empty, "im an legacy id", "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
+                                           "Im an event type", "im an fingerprint", "Im an ID", DateTime.Now, "TEST");
 
             Assert.ThrowsAsync<NotImplementedException>(() => handler.HandleMemberAsync(message));
         }
