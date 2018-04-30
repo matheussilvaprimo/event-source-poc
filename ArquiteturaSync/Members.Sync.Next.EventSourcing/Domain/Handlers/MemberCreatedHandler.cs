@@ -13,10 +13,13 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
 
         private readonly ICassandraEventStore _eventStore;
 
-        public async Task HandleMemberAsync(MemberCreatedEvent @event)
+        public async Task<bool> HandleMemberAsync(MemberCreatedEvent @event)
         {
             //TODO: Tratar o evento
             await _eventStore.SaveEventAsync("im an AggregateRoot ID", @event);
+
+            //TODO: Tratar os retornos
+            return true;
         }
     }
 }

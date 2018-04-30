@@ -1,23 +1,28 @@
-﻿using DotzNext.EventStore;
-using Members.Sync.Next.EventSourcing.Domain.Events;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DotzNext.EventStore;
+using Members.Sync.Next.EventSourcing.Domain.Aggregates;
+using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
-    public class MockEventStore : IEventStore<MockMemberAggregateRoot, BaseMemberEvent>
+    public class MockEventStore : IEventStore<MemberAggregateRoot, BaseMemberEvent>
     {
-        private static List<MockMemberAggregateRoot> _aggregates = new List<MockMemberAggregateRoot>();
-
-        public Task<IEnumerable<BaseMemberEvent>> GetEventsAsync(string aggregateId)
+        public MockEventStore()
         {
-            return Task.Run(() => _aggregates.AsQueryable().Where(x => x.ID == aggregateId).SelectMany(x => x.Events).AsEnumerable());
+           //Implement memmory seed here
+        }
+        private static List<MemberAggregateRoot> _aggregates;
+
+        public async Task<IEnumerable<BaseMemberEvent>> GetEventsAsync(string aggregateId)
+        {
+            return await Task.Run(() => _aggregates.Where(x => x.ID == aggregateId).SelectMany(e => e.Events).ToList());
         }
 
-        public Task SaveAggregateAsync(MockMemberAggregateRoot aggregate)
+        public async Task SaveAggregateAsync(MemberAggregateRoot aggregate)
         {
-            return Task.Run(() => _aggregates.Add(aggregate));
+            await Task.Run(() => _aggregates.Add(aggregate));
         }
 
         public Task SaveEventAsync(string aggregateId, BaseMemberEvent @event)
