@@ -13,16 +13,6 @@ namespace Members.Sync.Next.EventSourcing.Tests
         {
         }
 
-        private ServiceProvider Setup()
-        {
-            var serviceProvider = new ServiceCollection()
-                                     .AddScoped<MemberCreatedHandler>()
-                                     .AddScoped<ICassandraEventStore, CassandraEventStore>()
-                                     .AddScoped<CassandraProvider>();
-
-            return serviceProvider.BuildServiceProvider();
-        }
-
         [Fact]
         public void HandleMemberWithMessageNull()
         {
@@ -39,6 +29,16 @@ namespace Members.Sync.Next.EventSourcing.Tests
             var message = new MemberCreatedEvent("", "", DateTime.Now, "");
 
             Assert.ThrowsAsync<NotImplementedException>(() => handler.HandleMemberAsync(message));
+        }
+
+        private ServiceProvider Setup()
+        {
+            var serviceProvider = new ServiceCollection()
+                                     .AddScoped<MemberCreatedHandler>()
+                                     .AddScoped<ICassandraEventStore, CassandraEventStore>()
+                                     .AddScoped<CassandraProvider>();
+
+            return serviceProvider.BuildServiceProvider();
         }
     }
 }
