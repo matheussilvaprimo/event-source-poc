@@ -2,8 +2,5 @@
 {
     public class MemberEventStoreTest
     {
-        public MemberEventStoreTest()
-        {
-        }
     }
 }

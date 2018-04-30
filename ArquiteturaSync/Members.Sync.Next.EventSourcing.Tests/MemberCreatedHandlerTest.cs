@@ -9,10 +9,6 @@ namespace Members.Sync.Next.EventSourcing.Tests
 {
     public class MemberCreatedHandlerTest
     {
-        public MemberCreatedHandlerTest()
-        {
-        }
-
         [Fact]
         public void HandleMemberWithMessageNull()
         {

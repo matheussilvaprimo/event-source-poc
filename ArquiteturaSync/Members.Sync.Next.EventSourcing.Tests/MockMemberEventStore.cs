@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DotzNext.EventStore;
+﻿using DotzNext.EventStore;
 using Members.Sync.Next.EventSourcing.Domain.Aggregates;
 using Members.Sync.Next.EventSourcing.Domain.Events;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
@@ -11,8 +11,9 @@ namespace Members.Sync.Next.EventSourcing.Tests
     {
         public MockEventStore()
         {
-           //Implement memmory seed here
+            _aggregates = new List<MemberAggregateRoot>();
         }
+
         private static List<MemberAggregateRoot> _aggregates;
 
         public async Task<IEnumerable<BaseMemberEvent>> GetEventsAsync(string aggregateId)
