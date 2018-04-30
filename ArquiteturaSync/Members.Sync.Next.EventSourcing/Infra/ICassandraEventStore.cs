@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using DotzNext.EventSourcing;
 using DotzNext.EventStore;
+using Members.Sync.Next.EventSourcing.Domain.Aggregates;
+using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Infra
 {
-    public interface ICassandraEventStore<TAggregate, TEvent> : IEventStore<TAggregate, TEvent> 
-                                    where TAggregate : AggregateRoot<TEvent>, new() where TEvent : Event
+    public interface ICassandraEventStore : IEventStore<MemberAggregateRoot, BaseMemberEvent> 
     {
-        Task SaveEventAsync(string aggregateId, string userID, string legacyID, TEvent @event);
-        Task<TAggregate> GetAggregateAsync(Expression<Func<TAggregate, bool>> predicate);
+        Task SaveEventAsync(string aggregateId, string userID, string legacyID, BaseMemberEvent @event);
+        Task<MemberAggregateRoot> GetAggregateAsync(Expression<Func<MemberAggregateRoot, bool>> predicate);
     }
 }

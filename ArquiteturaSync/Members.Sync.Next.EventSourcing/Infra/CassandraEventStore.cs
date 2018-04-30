@@ -7,7 +7,7 @@ using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Infra
 {
-    public class CassandraEventStore : IMemberEventStore
+    public class CassandraEventStore : ICassandraEventStore
     {
         private readonly CassandraProvider _provider;
         public CassandraEventStore(CassandraProvider provider)
