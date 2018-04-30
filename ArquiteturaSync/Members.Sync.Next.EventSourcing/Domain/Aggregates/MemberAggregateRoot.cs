@@ -49,22 +49,22 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 
                 if (t == typeof(MemberCreatedEvent))
                 {
-                    MapMemberCreatedEvent(x);
+                    ApplyMemberCreatedEvent(x);
                 }
                 else if(t == typeof(MemberPersonalInfoUpdatedEvent))
                 {
-                    MapMemberPersonalInfoUpdatedEvent(x);
+                    ApplyMemberPersonalInfoUpdatedEvent(x);
                 }
                 else if(t == typeof(AddressCreatedEvent))
                 {
-                    MapMemberAddressCreatedEvent(x);
+                    ApplyMemberAddressCreatedEvent(x);
                 }
             });
         }
 
         public static MemberAggregateRoot New() => new MemberAggregateRoot { Events = new List<BaseMemberEvent>() };
 
-        private void MapMemberCreatedEvent(BaseMemberEvent e)
+        private void ApplyMemberCreatedEvent(BaseMemberEvent e)
         {
             var m = e as MemberCreatedEvent;
             if (!string.IsNullOrWhiteSpace(m.ID)) MemberState.ID = m.ID;
@@ -73,10 +73,10 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
             if (m.Age > 0) MemberState.Age = m.Age;
             if (!string.IsNullOrWhiteSpace(m.CellNumber)) MemberState.CellNumber = m.CellNumber;
             if (m.DateOfBirth != null || MemberState.DateOfBirth != DateTime.MinValue) MemberState.DateOfBirth = m.DateOfBirth;
-            if (m?.Addresses.Count > 0) MapMemberAddressCreatedEvent(e);
+            if (m?.Addresses.Count > 0) ApplyMemberAddressCreatedEvent(e);
         }
 
-        private void MapMemberPersonalInfoUpdatedEvent(BaseMemberEvent e)
+        private void ApplyMemberPersonalInfoUpdatedEvent(BaseMemberEvent e)
         {
             var m = e as MemberPersonalInfoUpdatedEvent;
             if (!string.IsNullOrWhiteSpace(m.ID)) MemberState.ID = m.ID;
@@ -88,7 +88,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 
         }
 
-        private void MapMemberAddressCreatedEvent(BaseMemberEvent e)
+        private void ApplyMemberAddressCreatedEvent(BaseMemberEvent e)
         {
             var m = e as AddressCreatedEvent;
 
@@ -105,7 +105,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
                 State = m.State,
                 StreetName = m.StreetName,
                 StreetNumber = m.StreetNumber,
-                Type = m.Type
+                AddressType = m.Type
             });
         }
     }

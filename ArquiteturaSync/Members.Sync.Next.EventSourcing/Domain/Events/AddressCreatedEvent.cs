@@ -4,7 +4,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Events
 {
     public class AddressCreatedEvent : BaseMemberEvent
     {
-        public AddressCreatedEvent(string iD, string memberIdentifier, string memberIdentifierType, string streetName, int streetNumber, string referencePoint, string city, string state, 
+        public AddressCreatedEvent(string iD, string memberIdentifier, int memberIdentifierType, string streetName, int streetNumber, string referencePoint, string city, string state, 
             string country, bool defaultAddress, string type, string fingerPrint, string ID, DateTime Date, string Source) : base(fingerPrint, ID, Date, Source)
         {
             ID = iD;
@@ -21,7 +21,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Events
         }
 
         public string MemberIdentifier { get; set; }
-        public string MemberIdentifierType { get; set; }
+        public int MemberIdentifierType { get; set; }
         public string StreetName { get; set; }
         public int StreetNumber { get; set; }
         public string ReferencePoint { get; set; }

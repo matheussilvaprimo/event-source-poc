@@ -11,6 +11,6 @@
         public string State { get; set; }
         public string Country { get; set; }
         public bool DefaultAddress { get; set; }
-        public string Type { get; set; }
+        public string AddressType { get; set; }
     }
 }

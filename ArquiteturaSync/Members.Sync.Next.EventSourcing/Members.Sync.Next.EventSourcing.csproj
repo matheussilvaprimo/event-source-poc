@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DotzNext.EventSourcing\DotzNext.EventSourcing.csproj" />
     <ProjectReference Include="..\DotzNext.EventStore\DotzNext.EventStore.csproj" />
+    <ProjectReference Include="..\Members.Sync.Next.Services\Members.Sync.Next.Services.csproj" />
   </ItemGroup>
 
 </Project>
