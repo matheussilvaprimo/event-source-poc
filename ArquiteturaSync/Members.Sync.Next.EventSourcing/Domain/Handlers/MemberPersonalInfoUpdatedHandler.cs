@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Members.Sync.Next.EventSourcing.Domain.Aggregates;
 using Members.Sync.Next.EventSourcing.Domain.Events;
 using Members.Sync.Next.EventSourcing.Infra;
 
@@ -13,13 +15,39 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
 
         private readonly ICassandraEventStore _eventStore;
 
-        public async Task<bool> HandleMemberAsync(MemberPersonalInfoUpdatedEvent @event)
+        public async Task<bool> HandleEventAsync(MemberPersonalInfoUpdatedEvent @event)
         {
-            //TODO: Tratar o evento
-            await _eventStore.SaveEventAsync("im an AggregateRoot ID", @event);
+            if (@event == null)
+            {
+                return false;
+            }
 
-            //TODO: Tratar retorno
-            return true;
+            try
+            {
+                var agg = _eventStore.GetAggregateAsync(x => x.MemberIdentifier == @event.Identifier && x.MemberIdentifierType == @event.IdentifierType).Result
+                        ?? MemberAggregateRoot.New();
+
+                bool handleEvent = !agg.HasEvent(@event);
+
+                if (handleEvent)
+                {
+                    await _eventStore.SaveEventAsync(@event);
+
+                    agg.AddEventToStream(@event);
+                    agg.RebuildEventStream();
+
+                    await _eventStore.SaveAggregateAsync(agg);
+
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                //TODO: Handle Exceptions
+                return false;
+            }
         }
     }
 }
