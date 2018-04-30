@@ -93,13 +93,14 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
             var m = e as AddressCreatedEvent;
 
             if (MemberState.Addresses == null) MemberState.Addresses = new List<Address>();
+
             MemberState.Addresses.Add(new Address
             {
                 City = m.City,
                 Country = m.Country,
                 DefaultAddress = m.DefaultAddress,
                 ID = m.ID,
-                MemberID = m.MemberID,
+                MemberID = m.MemberIdentifier,
                 ReferencePoint = m.ReferencePoint,
                 State = m.State,
                 StreetName = m.StreetName,

@@ -4,10 +4,10 @@ namespace Members.Sync.Next.Services.Messages
 {
     public class MemberCreatedMessage
     {
-        public List<AddressMessage> Addresses { get; set; }
+        public List<AddressCreatedMessage> Addresses { get; set; }
     }
 
-    public class AddressMessage
+    public class AddressCreatedMessage
     {
         public string StreetName { get; set; }
         public int StreetNumber { get; set; }
