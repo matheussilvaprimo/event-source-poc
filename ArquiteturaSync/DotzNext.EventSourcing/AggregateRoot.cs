@@ -39,9 +39,6 @@ namespace DotzNext.EventSourcing
         /// </summary>
         /// <param name="e">event to be searched</param>
         /// <returns></returns>
-        public virtual bool HasEvent(TEvent e)
-        {
-            return Events.Any(x => x.Date == e.Date && x.Source == e.Source);
-        }
+        public abstract bool HasEvent(TEvent e);
     }
 }
