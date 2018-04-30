@@ -26,5 +26,11 @@ namespace Members.Sync.Next.EventSourcing.Domain.Events
             return new MemberCreatedEvent(m.Identifier, m.IdentifierType, memberID, legacyID, m.FullName, m.Age, 
                                           m.CellNumber, m.DateOfBirth, m.EventType, addresses, "fingerprint here", "ID here", m.EventDate, m.Source);
         }
+
+        public static MemberPersonalInfoUpdatedEvent MapFromMessage(this MemberUpdatedMessage m)
+        {
+            return new MemberPersonalInfoUpdatedEvent(m.Identifier, m.IdentifierType, m.MemberID, m.LegacyID, m.FullName, m.Age,
+                                          m.CellNumber, m.DateOfBirth, m.EventType, "fingerprint here", "ID here", m.EventDate, m.Source);
+        }
     }
 }
