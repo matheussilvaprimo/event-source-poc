@@ -43,7 +43,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         public void HandleMemberWithDuplicatedEvent()
         {
             var @event = new MemberCreatedEvent(CassandraUtils.GenerateTimeUUID(), 0, string.Empty, CassandraUtils.GenerateTimeUUID(), "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
-                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
+                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
 
             _handler.HandleEventAsync(@event).GetAwaiter().GetResult();
 
@@ -56,12 +56,12 @@ namespace Members.Sync.Next.EventSourcing.Tests
         public void HandleMemberWithDuplicatedEventWithDiferentDate()
         {
             var @event = new MemberCreatedEvent(CassandraUtils.GenerateTimeUUID(), 0, string.Empty, CassandraUtils.GenerateTimeUUID(), "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
-                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), DateTime.Now.Date.AddMinutes(-1), "TEST");
+                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
 
             _handler.HandleEventAsync(@event).GetAwaiter().GetResult();
 
             var @event2 = new MemberCreatedEvent(CassandraUtils.GenerateTimeUUID(), 0, string.Empty, CassandraUtils.GenerateTimeUUID(), "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
-                                                        "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
+                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
 
             var result = _handler.HandleEventAsync(@event2);
 
@@ -72,7 +72,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         public void HandleMemberWithDiferentEvent()
         {
             var @event = new MemberCreatedEvent(CassandraUtils.GenerateTimeUUID(), 0, string.Empty, CassandraUtils.GenerateTimeUUID(), "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
-                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
+                                              "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
 
             _handler.HandleEventAsync(@event).GetAwaiter().GetResult();
             var result = _handler.HandleEventAsync(@event);
