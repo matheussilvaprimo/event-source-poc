@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Members.Sync.Next.EventSourcing.Domain.Aggregates;
+using Members.Sync.Next.EventSourcing.Domain.Events;
+using Members.Sync.Next.EventSourcing.Infra;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Members.Sync.Next.EventSourcing.Domain.Aggregates;
-using Members.Sync.Next.EventSourcing.Domain.Events;
-using Members.Sync.Next.EventSourcing.Infra;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
