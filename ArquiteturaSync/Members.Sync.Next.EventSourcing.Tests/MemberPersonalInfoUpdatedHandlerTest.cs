@@ -15,7 +15,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         {
             _handler = new ServiceCollection()
                                      .AddScoped<MemberPersonalInfoUpdatedHandler>()
-                                     .AddScoped<ICassandraEventStore, MockEventStore>()
+                                     .AddScoped<IAggregateEventStore, MockEventStore>()
                                      .AddScoped<CassandraProvider>()
                                      .BuildServiceProvider()
                                      .GetService<MemberPersonalInfoUpdatedHandler>();
