@@ -32,7 +32,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         public void HandleMemberWithMessageValid()
         {
             var @event = new MemberCreatedEvent(CassandraUtils.GenerateTimeUUID(), 0, string.Empty, CassandraUtils.GenerateTimeUUID(), "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
-                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
+                                           "Im an event type", null, "im an fingerprint", CassandraUtils.GenerateTimeUUID(), CassandraUtils.GenerateTimeUUID(), DateTime.Now, "TEST");
 
             var result = _handler.HandleEventAsync(@event);
 

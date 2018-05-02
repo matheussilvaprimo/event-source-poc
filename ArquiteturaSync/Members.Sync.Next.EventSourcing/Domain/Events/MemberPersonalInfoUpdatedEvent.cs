@@ -6,7 +6,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Events
     {
 
         public MemberPersonalInfoUpdatedEvent(string Identifier, int IdentifierType, string MemberID, string LegacyID, string FullName, long Age, string CellNumber,
-                                  DateTime DateOfBirth, string EventType, string fingerPrint, string ID, DateTime Date, string Source) : base(Identifier, IdentifierType, fingerPrint, ID, Date, Source)
+                                  DateTime DateOfBirth, string EventType, string fingerPrint, string ID, string AggregateID, DateTime Date, string Source) : base(Identifier, IdentifierType, fingerPrint, ID, AggregateID, Date, Source)
         {
             this.Identifier = Identifier;
             this.IdentifierType = IdentifierType;

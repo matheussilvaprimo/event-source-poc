@@ -7,7 +7,6 @@ namespace DotzNext.EventStore
     public interface IEventStore<TAggregate, TEvent> where TAggregate : AggregateRoot<TEvent>, new() where TEvent : Event
     {
         Task<IEnumerable<TEvent>> GetEventsAsync(string aggregateId);
-        Task SaveAggregateAsync(TAggregate aggregate);
-        Task SaveEventAsync(string aggregateId, TEvent @event);
+        Task SaveEventAsync(TEvent @event);
     }
 }

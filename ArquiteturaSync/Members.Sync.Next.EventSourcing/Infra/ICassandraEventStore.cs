@@ -8,7 +8,7 @@ namespace Members.Sync.Next.EventSourcing.Infra
 {
     public interface ICassandraEventStore : IEventStore<MemberAggregateRoot, BaseMemberEvent> 
     {
-        Task SaveEventAsync(BaseMemberEvent @event);
+        Task SaveAggregateAsync(MemberAggregateRoot aggregate);
         Task<MemberAggregateRoot> GetAggregateAsync(Func<MemberAggregateRoot, bool> predicate);
     }
 }
