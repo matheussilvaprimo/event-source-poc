@@ -6,7 +6,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Events
     public class BaseMemberEvent : Event
     {
         public BaseMemberEvent(string memberIdentifier, int memberIdentifierType,  string fingerPrint, 
-                               string ID, DateTime Date, string Source) : base(ID, Date, Source)
+                               string ID, string AggregateID, DateTime Date, string Source) : base(ID, AggregateID, Date, Source)
         {
             MemberIdentifier = memberIdentifier;
             MemberIdentifierType = memberIdentifierType;

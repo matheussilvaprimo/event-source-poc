@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Members.Sync.Next.EventSourcing.Domain.Aggregates;
 using Members.Sync.Next.EventSourcing.Domain.Events;
@@ -31,11 +30,6 @@ namespace Members.Sync.Next.EventSourcing.Infra
         }
 
         public Task SaveEventAsync(BaseMemberEvent @event)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveEventAsync(string aggregateId, BaseMemberEvent @event)
         {
             throw new NotImplementedException();
         }
