@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Members.Sync.Next.EventSourcing.Tests
 {
-    public class MockEventStore : ICassandraEventStore
+    public class MockEventStore : IAggregateEventStore
     {
         public MockEventStore()
         {

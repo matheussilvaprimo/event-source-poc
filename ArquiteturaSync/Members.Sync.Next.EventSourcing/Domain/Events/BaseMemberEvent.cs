@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DotzNext.EventSourcing;
 
 namespace Members.Sync.Next.EventSourcing.Domain.Events
@@ -22,6 +23,23 @@ namespace Members.Sync.Next.EventSourcing.Domain.Events
         public override Object GetVersion()
         {
             return FingerPrint;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var x = obj as BaseMemberEvent;
+
+            if (x == null) return false;
+
+            return x.Date.Equals(Date) && x.GetVersion().Equals(GetVersion());            
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 735347539;
+            hashCode = hashCode * -1521134295 + EqualityComparer<DateTime>.Default.GetHashCode(Date);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FingerPrint);
+            return hashCode;
         }
     }
 }

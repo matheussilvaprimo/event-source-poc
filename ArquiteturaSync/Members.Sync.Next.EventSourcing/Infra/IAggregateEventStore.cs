@@ -6,7 +6,7 @@ using Members.Sync.Next.EventSourcing.Domain.Events;
 
 namespace Members.Sync.Next.EventSourcing.Infra
 {
-    public interface ICassandraEventStore : IEventStore<MemberAggregateRoot, BaseMemberEvent> 
+    public interface IAggregateEventStore : IEventStore<MemberAggregateRoot, BaseMemberEvent> 
     {
         Task SaveAggregateAsync(MemberAggregateRoot aggregate);
         Task<MemberAggregateRoot> GetAggregateAsync(Func<MemberAggregateRoot, bool> predicate);

@@ -39,7 +39,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Aggregates
 
         public override bool HasEvent(BaseMemberEvent e)
         {
-            return Events.Any(x => x.Date == e.Date && x.GetVersion().Equals(e.GetVersion()));
+            return Events.Any(x => x.Equals(e));
         }
 
         public override void RebuildEventStream()

@@ -8,12 +8,12 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
 {
     public class MemberCreatedHandler
     {
-        public MemberCreatedHandler(ICassandraEventStore eventStore)
+        public MemberCreatedHandler(IAggregateEventStore eventStore)
         {
             _eventStore = eventStore;
         }
 
-        private readonly ICassandraEventStore _eventStore;
+        private readonly IAggregateEventStore _eventStore;
 
         public async Task<bool> HandleEventAsync(MemberCreatedEvent @event)
         {
