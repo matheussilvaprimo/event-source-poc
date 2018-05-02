@@ -31,6 +31,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
 
                 if (handleEvent)
                 {
+                    await _eventStore.SaveAggregateAsync(agg);
                     await _eventStore.SaveEventAsync(@event);
                     return true;
                 }

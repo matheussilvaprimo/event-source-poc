@@ -37,7 +37,7 @@ namespace Members.Sync.Next.EventSourcing.Domain.Handlers
                     agg.RebuildEventStream();
 
                     await _eventStore.SaveAggregateAsync(agg);
-
+                    await _eventStore.SaveEventAsync(@event);
                     return true;
                 }
 
