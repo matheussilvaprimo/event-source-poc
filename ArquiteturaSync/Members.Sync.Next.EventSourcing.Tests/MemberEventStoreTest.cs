@@ -69,7 +69,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
 
             aggregate.Events.Add(@event);
 
-            _eventStore.SaveAggregateAsync(aggregate).GetAwaiter();
+            _eventStore.SaveAggregateAsync(aggregate).GetAwaiter().GetResult();
 
             var list = _eventStore.GetEventsAsync(aggregate.ID).Result;
 
@@ -89,6 +89,7 @@ namespace Members.Sync.Next.EventSourcing.Tests
         [Fact]
         public void AddEventWithAggregateValid()
         {
+
             var aggregate = new MemberAggregateRoot()
             {
                 ID = "im am a id",
@@ -100,12 +101,12 @@ namespace Members.Sync.Next.EventSourcing.Tests
                 AddressState = new System.Collections.Generic.List<Address>(),
             };
 
-            _eventStore.SaveAggregateAsync(aggregate).GetAwaiter();
+            _eventStore.SaveAggregateAsync(aggregate).GetAwaiter().GetResult();
 
             var @event = new MemberCreatedEvent("im an identifier", 0, string.Empty, "im an legacy id", "FooName", 30, "Im an cellnumber", DateTime.Parse("07-30-1990"),
                                   "Im an event type", null, "im an fingerprint", "Im an ID", DateTime.Now, "TEST");
 
-            _eventStore.SaveEventAsync(aggregate.ID, @event);
+            _eventStore.SaveEventAsync(aggregate.ID, @event).GetAwaiter().GetResult();
 
             var list = _eventStore.GetEventsAsync(aggregate.ID).Result;
 
