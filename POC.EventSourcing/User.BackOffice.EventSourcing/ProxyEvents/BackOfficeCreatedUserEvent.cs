@@ -2,13 +2,13 @@
 using Events;
 using Events.ValueObjects;
 using EventSourcing;
-using User.BackOffice.EventSourcing.Aggregates;
+using User.BackOffice.EventSourcing.Entities;
 
 namespace User.BackOffice.EventSourcing.ProxyEvents
 {
-    public class BackOfficeCreatedUserEvent : CreatedUserEvent, IEvent
+    public class BackOfficeCreatedUserEvent : UserCreatedEvent, IEvent
     {
-        protected BackOfficeCreatedUserEvent(UserInformation userInfo, Address registrationAddress, string userName, DateTime eventDate, string source, string version)
+        public BackOfficeCreatedUserEvent(UserInformation userInfo, Address registrationAddress, string userName, DateTime eventDate, string source, string version)
                                                       : base(userInfo, registrationAddress, userName, eventDate, source, version)
         {
         }
@@ -18,6 +18,7 @@ namespace User.BackOffice.EventSourcing.ProxyEvents
             if (target is UserAggregateRootEntity agg)
             {
                 MapUserInfo(agg.UserInfo);
+                MapAddress(agg.Address);
             }
         }
 
@@ -29,9 +30,9 @@ namespace User.BackOffice.EventSourcing.ProxyEvents
             user.Gender = (VOs.Gender)UserInformation.Gender;
         }
 
-        private void MapAddress(UserAggregateRootEntity agg)
+        private void MapAddress(VOs.Address address)
         {
-            agg?.Addresses.Add(new VOs.Address
+            address = new VOs.Address
             {
                 AdditionalInformation = RegistrationAddress.AdditionalInformation,
                 AddressNumber = RegistrationAddress.AddressNumber,
@@ -42,7 +43,7 @@ namespace User.BackOffice.EventSourcing.ProxyEvents
                 ReferencePoint = RegistrationAddress.ReferencePoint,
                 State = RegistrationAddress.State,
                 StreetName = RegistrationAddress.StreetName
-            });
+            };
         }
     }
 }

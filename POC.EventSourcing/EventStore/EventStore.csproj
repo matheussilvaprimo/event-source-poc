@@ -13,17 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="DTOs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\EventSourcing\EventSourcing.csproj" />
-    <ProjectReference Include="..\EventStore\EventStore.csproj" />
+    <PackageReference Include="Google.Cloud.Datastore.V1" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

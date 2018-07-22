@@ -3,9 +3,9 @@ using Events.ValueObjects;
 
 namespace Events
 {
-    public class UpdatedUserEvent : BaseUserEvent
+    public class UserUpdatedEvent : BaseUserEvent
     {
-        protected UpdatedUserEvent(UserInformation userInfo, string userName, DateTime eventDate, string source, 
+        protected UserUpdatedEvent(UserInformation userInfo, string userName, DateTime eventDate, string source, 
                                    string version) : base(userName, eventDate, source, version)
         {
             UserInformation = userInfo;

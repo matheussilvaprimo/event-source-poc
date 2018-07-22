@@ -2,9 +2,9 @@
 
 namespace Events
 {
-    public class CreatedCellPhoneEvent : BaseUserEvent
+    public class CellPhoneUpdatedEvent : BaseUserEvent
     {
-        protected CreatedCellPhoneEvent(string userName, DateTime eventDate, string source, string version)
+        protected CellPhoneUpdatedEvent(string userName, DateTime eventDate, string source, string version)
                                         : base(userName, eventDate, source, version)
         {
         }

@@ -3,8 +3,8 @@ using Events;
 
 namespace EventSourcing
 {
-    public interface IEventHandler<T> where T : BaseEvent
+    public interface IEventHandler
     {
-        Task<bool> HandleEventAsync(T e);
+        Task<bool> HandleEventAsync<T>(T e) where T : BaseEvent;
     }
 }
