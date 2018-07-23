@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using EventStore.Attributes;
 using Google.Cloud.Datastore.V1;
 
 namespace EventStore

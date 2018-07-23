@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using EventSourcing;
-using EventStore;
+using EventStore.Attributes;
 using Newtonsoft.Json;
 using User.BackOffice.EventSourcing.VOs;
 
@@ -17,7 +17,11 @@ namespace User.BackOffice.EventSourcing.Entities
         public string AggregateState { get; set; }
         public Guid Id { get; set; } = Guid.NewGuid();
         [IndexedProperty]
+        [QueryableField(Order = 1)]
         public string UserName { get; set; }
+        [IndexedProperty]
+        [QueryableField(Order = 2)]
+        public string Teste { get; set; }
         [NotMapped]
         public UserInformation UserInfo { get; set; }
         [NotMapped]

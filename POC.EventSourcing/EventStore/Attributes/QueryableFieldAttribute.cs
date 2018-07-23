@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace EventStore
+namespace EventStore.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    public class IndexedPropertyAttribute : Attribute
+    public class QueryableFieldAttribute : Attribute
     {
+        public int Order { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using EventStore;
+using EventStore.Attributes;
 
 namespace User.BackOffice.EventSourcing.Entities
 {
@@ -15,11 +15,21 @@ namespace User.BackOffice.EventSourcing.Entities
         }
 
         public Guid Id { get; set; } = Guid.NewGuid();
-        public DateTime Date { get; set; }
+
         public string Source { get; set; }
         public string QualifiedName { get; set; }
+
         [IndexedProperty]
+        [QueryableField(Order = 1)]
+        public string UserName { get; set; }
+
+        [IndexedProperty]
+        [QueryableField(Order = 2)]
         public string EventType { get; set; }
+
+        [IndexedProperty]
+        [QueryableField(Order = 3)]
+        public DateTime Date { get; set; }
         public string State { get; set; }
     }
 }
