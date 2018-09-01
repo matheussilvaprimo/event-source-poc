@@ -1,18 +1,18 @@
 ﻿using System;
-using Ecommerce.Events.ValueObjects;
+using ECommerce.Events.ValueObjects;
 
 namespace Ecommerce.Events.User
 {
     public class UserAddressCreatedEvent : BaseUserEvent
     {
-        public UserAddressCreatedEvent(string platformID, Address address, string userName, DateTime eventDate, int version, string source) 
+        public UserAddressCreatedEvent(string AddressID, Address address, string userName, DateTime eventDate, int version, string source) 
       : base(userName, eventDate, version, source)
         {
-            PlatformID = platformID;
+            this.AddressID = AddressID;
             Address = address;
         }
 
-        public string PlatformID { get; }
+        public string AddressID { get; }
         public Address Address { get; }
     }
 }

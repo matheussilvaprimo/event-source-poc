@@ -1,5 +1,5 @@
 ﻿using System;
-using Ecommerce.Events.ValueObjects;
+using ECommerce.Events.ValueObjects;
 
 namespace Ecommerce.Events.User
 {
