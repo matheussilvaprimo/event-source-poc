@@ -2,7 +2,7 @@
 
 namespace Ecommerce.Events.User
 {
-    public class BaseUserEvent : BaseEvent
+    public abstract class BaseUserEvent : Event
     {
         public BaseUserEvent(string userName, DateTime eventDate, int version, string source) : base(eventDate, version, source)
         {

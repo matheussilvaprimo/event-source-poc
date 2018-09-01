@@ -2,9 +2,9 @@
 
 namespace Ecommerce.Events
 {
-    public abstract class BaseEvent
+    public abstract class Event
     {
-        protected BaseEvent(DateTime eventDate, int version, string source)
+        protected Event(DateTime eventDate, int version, string source)
         {
             EventDate = eventDate;
             Version = version;
