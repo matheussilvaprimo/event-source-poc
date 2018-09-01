@@ -14,7 +14,7 @@ namespace ECommerce.EventSourcing
         /// <summary>
         /// Rebuilds the aggregate based on the event stream
         /// </summary>
-        public abstract void RebuildStateFromStream(List<IEventState> events);
+        public abstract void RebuildStateFromStream(List<IDomainEvent> domainEvents);
 
         protected abstract void SerializeState();
 
