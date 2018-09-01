@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "eventbus\EventB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStore", "eventstore\EventStore.csproj", "{C0F78308-45EA-4EAC-880C-CC26EE155C0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{15F8F1EC-4325-44D6-8A84-363371A68CD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C0F78308-45EA-4EAC-880C-CC26EE155C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0F78308-45EA-4EAC-880C-CC26EE155C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0F78308-45EA-4EAC-880C-CC26EE155C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F8F1EC-4325-44D6-8A84-363371A68CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F8F1EC-4325-44D6-8A84-363371A68CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F8F1EC-4325-44D6-8A84-363371A68CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F8F1EC-4325-44D6-8A84-363371A68CD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

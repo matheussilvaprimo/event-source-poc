@@ -7,22 +7,25 @@ namespace EventStore.Extensions
 {
     public static class FilterExtensions
     {
-        public static Filter GetFilter(this object o)
+        /// <summary>
+        /// Creates and returns a composite filter which is the logical "AND" of all the specified filters.
+        /// </summary>
+        /// <param name="o">Object with properties decorated with the QueryableFieldAttribute</param>
+        /// <returns></returns>
+        public static Filter GetCompositeFilter(this object o)
         {
             var properties = o.GetType().GetProperties().Where(x => x.CustomAttributes.Any(n => n.AttributeType == typeof(QueryableFieldAttribute))).ToList();
 
-            if (properties == null) throw new Exception("This object contains no queryable fields.");
+            if (properties == null) throw new ArgumentException("This object contains no queryable fields.");
+            var param = new Filter[properties.Count];
 
-            var filter = new Filter();
-
-            foreach (var field in properties)
+            for (int i = 0; i < properties.Count; i++)
             {
-                filter = Filter.Equal(field.Name, GetValueFromType(field.GetValue(o)));
+                param[i] = Filter.Equal(properties[i].Name, GetValueFromType(properties[i].GetValue(o)));
             }
 
-            return new Filter(filter);
+            return Filter.And(param);
         }
-
         private static Value GetValueFromType(object o)
         {
             var type = o.GetType();
