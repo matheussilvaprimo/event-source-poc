@@ -1,10 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Ecommerce.Events.ValueObjects;
 
 namespace Ecommerce.Events.User
 {
-    class UserAddressCreatedEvent
+    public class UserAddressCreatedEvent : BaseUserEvent
     {
+        public UserAddressCreatedEvent(string platformID, Address address, string userName, DateTime eventDate, int version, string source) 
+      : base(userName, eventDate, version, source)
+        {
+            PlatformID = platformID;
+            Address = address;
+        }
+
+        public string PlatformID { get; }
+        public Address Address { get; }
     }
 }
