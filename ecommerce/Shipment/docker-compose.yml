@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  shipment.api:
+    image: ${DOCKER_REGISTRY}shipmentapi
+    build:
+      context: .
+      dockerfile: Shipment.API/Dockerfile
