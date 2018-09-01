@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.Events.ValueObjects
+﻿namespace ECommerce.Events.ValueObjects
 {
     public class Address
     {
