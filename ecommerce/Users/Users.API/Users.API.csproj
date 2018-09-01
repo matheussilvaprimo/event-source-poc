@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Users.Business\Users.Business.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,15 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Users.Business;
+using Users.Business.Model;
 
 namespace Users.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class UserController : ControllerBase
     {
+        private UserBusiness _business;
+
+        public UserController()
+        {
+            _business = new UserBusiness();
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -18,16 +23,18 @@ namespace Users.API.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{document}")]
+        public ActionResult<User> Get(string document)
         {
-            return "value";
+            return _business.GetUser(document);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] User user)
         {
+            _business.SaveUser(user);
+
         }
 
         // PUT api/values/5
