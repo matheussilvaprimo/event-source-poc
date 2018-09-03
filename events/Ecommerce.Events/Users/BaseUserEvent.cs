@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ecommerce.Events.User
+namespace Ecommerce.Events.Users
 {
     public abstract class BaseUserEvent : Event
     {

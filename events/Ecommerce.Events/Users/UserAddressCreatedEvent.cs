@@ -1,7 +1,7 @@
 ﻿using System;
 using ECommerce.Events.ValueObjects;
 
-namespace Ecommerce.Events.User
+namespace Ecommerce.Events.Users
 {
     public class UserAddressCreatedEvent : BaseUserEvent
     {

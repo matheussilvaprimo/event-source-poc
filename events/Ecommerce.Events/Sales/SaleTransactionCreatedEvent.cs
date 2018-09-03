@@ -1,10 +1,10 @@
 ﻿using ECommerce.Events.ValueObjects;
 
-namespace ECommerce.Events.Shipment
+namespace ECommerce.Events.Sales
 {
-    public class ShipmentOrderCreatedEvent
+    public class SaleTransactionCreatedEvent
     {
-        public ShipmentOrderCreatedEvent(Order order, DeliveryDetails deliveryDetails)
+        public SaleTransactionCreatedEvent(Order order, DeliveryDetails deliveryDetails)
         {
             Order = order;
             DeliveryDetails = deliveryDetails;
