@@ -2,7 +2,7 @@
 
 namespace Sales.Domain.ValueObjects
 {
-    public class Sale
+    public class Order
     {
         public string UserName { get; private set; }
         public List<Product> Products { get; private set; }

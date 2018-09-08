@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DomainEvents\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\events\ECommerce.EventSourcing\ECommerce.EventSourcing.csproj" />
   </ItemGroup>
 

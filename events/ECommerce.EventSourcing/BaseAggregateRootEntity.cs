@@ -16,8 +16,6 @@ namespace ECommerce.EventSourcing
         /// </summary>
         public abstract void RebuildStateFromStream(List<IDomainEvent> domainEvents);
 
-        protected abstract void SerializeState();
-
         /// <summary>
         /// This method increments the current Aggregate's version.
         /// </summary>
