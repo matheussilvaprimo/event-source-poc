@@ -4,13 +4,7 @@ namespace Sales.Domain.ValueObjects
 {
     public class Order
     {
-        public string UserName { get; private set; }
         public List<Product> Products { get; private set; }
-
-        internal void SetUserName(string userName)
-        {
-            UserName = userName;
-        }
 
         internal void AddProductToList(Product product)
         {
